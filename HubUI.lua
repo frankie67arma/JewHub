@@ -3,7 +3,7 @@ local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-S
 local Window = Luna:CreateWindow({
 	Name = "Home Page", -- This Is Title Of Your Window
 	Subtitle = "JewHub", -- A Gray Subtitle next To the main title.
-	LogoID = "nil", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
+	LogoID = "110952036367001", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
 	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
 	LoadingTitle = "JewHub", -- Header for loading screen
 	LoadingSubtitle = "by Nebula Softworks", -- Subtitle for loading screen
@@ -17,14 +17,14 @@ local Window = Luna:CreateWindow({
 	KeySettings = {
 		Title = "JewHub Key System",
 		Subtitle = "Key System",
-		Note = "Best Key System Ever! Also, Please Use A HWID Keysystem like Pelican, Luarmor etc. that provide key strings based on your HWID since putting a simple string is very easy to bypass, the key is 1234!",
+		Note = "You can get your key from the discord server, if you do not have one, please join the discord server and get your key.",
 		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
 		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-		Key = {"1234"},
+		Key = {"JewHubOnTop"},
 		SecondAction = {
 			Enabled = true,
 			Type = "Link", -- You can also put discord as an option, if your are doing that, don’t include discord.gg as Luna will auto add it as a prefix, just replace it with your identifier, example, if your are doing discord.gg/mspaint, just use mspaint.
-			Parameter = ""
+			Parameter = "https://discord.gg/QKq4hchxSf"
 		}
 	}
 })
@@ -49,7 +49,7 @@ Window:CreateHomeTab({
 		"CODex",
 		"Delta"
 	},
-	DiscordInvite = "1234", -- same thing here
+	DiscordInvite = "https://discord.gg/QKq4hchxSf", -- same thing here
 	Icon = 1
 })
 
