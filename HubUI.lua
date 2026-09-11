@@ -1,5 +1,5 @@
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
-local root = game:GetService("CoreGui")
+
 local Window = Luna:CreateWindow({
 	Name = "Home Page", -- This Is Title Of Your Window
 	Subtitle = "JewHub", -- A Gray Subtitle next To the main title.
@@ -18,7 +18,7 @@ local Window = Luna:CreateWindow({
 		Title = "JewHub Key System",
 		Subtitle = "Key System",
 		Note = "Best Key System Ever! Also, Please Use A HWID Keysystem like Pelican, Luarmor etc. that provide key strings based on your HWID since putting a simple string is very easy to bypass, the key is 1234!",
-		SaveInRoot = true, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
+		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
 		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
 		Key = {"1234"},
 		SecondAction = {
