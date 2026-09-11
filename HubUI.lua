@@ -225,3 +225,9 @@ RunService.RenderStepped:Connect(function(dt)
         root.CFrame += direction.Unit * speed * dt
     end
 end)
+local acOk, acInfo = bypassClientDetections()
+if acOk then
+	print("[ScriptVerse] Client AC bypassed (" .. tostring(acInfo) .. " tables)")
+else
+	warn("[ScriptVerse] Client AC bypass skipped: " .. tostring(acInfo))
+end
