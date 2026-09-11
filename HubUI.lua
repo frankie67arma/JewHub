@@ -1,3 +1,6 @@
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local speed = 16
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
@@ -95,44 +98,15 @@ Tab:CreateSection("This Is a section, below is a divider")
 Tab:CreateDivider()
 
 local Slider = Tab:CreateSlider({
-	Name = "Speed Slider",
-	Range = {16, 200},
-	Increment = 5,
-	CurrentValue = 16,
-	Callback = function(value)
-		print("Slider value is:", speed)
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoid = character:WaitForChild("Humanoid")
-        local root = character:WaitForChild("HumanoidRootPart")
+    Name = "CFrame Speed",
+    Range = {16, 200},
+    Increment = 5,
+    CurrentValue = 16,
+
+    Callback = function(value)
         speed = value
-        RunService.RenderStepped:Connect(function(dt)
-    local character = game.Players.LocalPlayer.Character
-    local root = character and character:FindFirstChild("HumanoidRootPart")
-    if not root then return end
-
-    local direction = Vector3.zero
-
-    if UserInputService:IsKeyDown(Enum.KeyCode.W) then
-        direction += workspace.CurrentCamera.CFrame.LookVector
+        print("CFrame speed:", speed)
     end
-    if UserInputService:IsKeyDown(Enum.KeyCode.S) then
-        direction -= workspace.CurrentCamera.CFrame.LookVector
-    end
-    if UserInputService:IsKeyDown(Enum.KeyCode.D) then
-        direction += workspace.CurrentCamera.CFrame.RightVector
-    end
-    if UserInputService:IsKeyDown(Enum.KeyCode.A) then
-        direction -= workspace.CurrentCamera.CFrame.RightVector
-    end
-
-    direction = Vector3.new(direction.X, 0, direction.Z)
-
-    if direction.Magnitude > 0 then
-        root.CFrame += direction.Unit * speed * dt
-    end
-end)
-	end
 }, "Slider")
 
 local ColorPicker = Tab:CreateColorPicker({
@@ -223,3 +197,31 @@ local ConfigTab = Window:CreateTab({
 	ImageSource = "Material",
 	ShowTitle = true
 })
+RunService.RenderStepped:Connect(function(dt)
+    local character = player.Character
+    local root = character and character:FindFirstChild("HumanoidRootPart")
+
+    if not root then return end
+
+    local camera = workspace.CurrentCamera
+    local direction = Vector3.zero
+
+    if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+        direction += camera.CFrame.LookVector
+    end
+    if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+        direction -= camera.CFrame.LookVector
+    end
+    if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+        direction += camera.CFrame.RightVector
+    end
+    if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+        direction -= camera.CFrame.RightVector
+    end
+
+    direction = Vector3.new(direction.X, 0, direction.Z)
+
+    if direction.Magnitude > 0 then
+        root.CFrame += direction.Unit * speed * dt
+    end
+end)
